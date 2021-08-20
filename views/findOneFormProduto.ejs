@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <!-- Pesquisa por Marca -->
+    <form action='/produto/findMarca' method='GET'>
+      <input class="input-text" type="text" name='inputMarca' placeholder="Digite a marca do produto">
+      <button type='submit'> Buscar por Marca </button>
+    </form>
+
+    <!-- Pesquisa por Categoria -->
+    <form action='/produto/findCategoria' method='GET'>
+      <input class="input-text" type="text" name='inputCategoria' placeholder="Digite a categoria do produto">
+      <button type='submit'> Buscar por Categoria </button>
+    </form>
+
+    <!-- Pesquisa por Nome -->
+    <form action='/produto/findNome' method='GET'>
+      <input class="input-text" type="text" name='inputNome' placeholder="Digite o nome do produto" autofocus>
+      <button type='submit'> Buscar por nome </button>
+    </form>
+    <a href='/produto/listProduto'><button type='button'> Ir para lista </button></a>
+</html>

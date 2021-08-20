@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Anotações básicas em <%= title %></p>
+    <form action='/fn' method='GET'>
+      <input class="input-text" type="text" name='inputNumero' placeholder="Digite o número da anotação" disabled>
+      <button type='submit' disabled> Buscar por número </button>
+    </form>
+    <form action='/ft' method='GET'>
+      <input class="input-text" type="text" name='inputTitulo' placeholder="Digite o título da anotação" autofocus>
+      <button type='submit'> Buscar por título </button>
+    </form>
+    <a href='/list'><button type='button'> Cancelar </button></a>
+</html>

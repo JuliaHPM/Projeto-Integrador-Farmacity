@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p><%= title %></p>
+    <form action='/cliente/<%= cliente.id %>/edit' method='POST'>
+      <input class="input-text" type="text" name='inputNome' placeholder="Nome do cliente" value="<%= cliente.nome %>" autofocus="true">
+      <input class="input-text" type="text" name='inputEmail' placeholder="cliente@gmail.com" value="<%= cliente.email %>">
+      <input class="input-text" type="text" name='inputData_nasc' placeholder="23/02/1996" value="<%= cliente.data_nasc %>">
+      <input class="input-text" type="text" name='inputTelefone' placeholder="(54) 9 9765-9999" value="<%= cliente.telefone %>">
+      <input class="input-text" type="text" name='inputCpf' placeholder="___.___.___-___" value="<%= cliente.cpf %>">
+      <input class="input-text" type="text" name='inputRg' placeholder="__________" value="<%= cliente.rg %>">
+
+      <button type='submit'> Salvar </button>
+    </form>
+    <a href='/cliente/<%= cliente.id %>'><button type='button'> Cancelar </button></a>
+</html>

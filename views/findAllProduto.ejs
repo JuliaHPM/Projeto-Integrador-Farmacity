@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Marca</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+      </tr>
+      
+    <% produtos.forEach( function(produto) { %>
+      <tr> 
+        <td> <%= produto.id %> </td>
+        <td> <%= produto.nome %> </td>
+        <td> <%= produto.descricao %> </td>
+        <td> <%= produto.marca %> </td>
+        <td> <%= produto.categoria %> </td>
+        <td> <%= produto.preco %> </td>
+        <td> <%= produto.quantidade %> </td>
+      </tr>        
+    <% }); %>
+    </table>
+    
+    <a href='/produto'><button type='button' name='btHome'>Home</button></a>
+    <a href='/produto/createProduto'><button type='button' name='btCreate'>Criar</button></a>
+    <a href='/produto/findProduto'><button type='button' name='btList'>Buscar</button></a>
+</html>

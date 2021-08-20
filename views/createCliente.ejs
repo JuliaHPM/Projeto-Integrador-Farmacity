@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p> <%= title %></p>
+    <form action='/cliente' method='POST'>
+      <input class="input-text" type="text" name='inputNome' placeholder="Nome do cliente" autofocus="true">
+      <input class="input-text" type="text" name='inputEmail' placeholder="Email">
+      <input class="input-text" type="text" name='inputData_nasc' placeholder="Data nascimento">
+      <input class="input-text" type="text" name='inputTelefone' placeholder="Telefone">
+      <input class="input-text" type="text" name='inputCpf' placeholder="CPF (___.___.___-___)">
+      <input class="input-text" type="text" name='inputRg' placeholder="RG">
+      <button type='submit'> Salvar </button>
+      <a href='/cliente/'><button type='button'> Cancelar </button></a>
+    </form>
+</html>
+

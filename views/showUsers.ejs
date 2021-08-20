@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Bem vindo <%= user.username %></p>
+    <p><%= user.email %></p>
+    <%= //console.log(user.password) %>
+
+    <!--listar notas do usuário-->
+    <% user.notes.forEach( function(note, i) { %>
+      <h2> Nota nº <%= i+1 %>: <%= note.title %> </h2>
+      <h6> ID no banco: <%= note.id %> </h6>
+      <p> <%= note.content %> </p>      
+    <% }); %>
+   
+    <a href='/create'><button type='button' name='btCreate'>Criar</button></a>
+    <a href='/find'><button type='button' name='btList'>Buscar</button></a>
+
+    <a href='/users/logout'><button type='button' name='btLogout'>Logout</button></a>
+</html>

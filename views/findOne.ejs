@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Anotações básicas em <%= title %></p>
+      <h2> <%= note.title %> </h2>
+      <p> <%= note.content %> </p>
+      <form action='/<%= note.id %>/edit' method='GET'>
+        <button type='submit' value='edit'>Editar</button>
+       </form>
+      <form action='/<%= note.id %>/del' method='POST'>
+        <button type='submit' value='remove'>Apagar</button>
+      </form>
+    <a href='/find'><button type='button' name='btList'>Buscar</button></a>
+    <a href='/list'><button type='button' name='btList'>Voltar</button></a>
+  </body>
+</html>

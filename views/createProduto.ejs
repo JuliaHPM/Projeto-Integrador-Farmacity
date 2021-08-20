@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action='/produto' method='POST'>
+      <input class="input-text" type="text" name='inputNome' placeholder="Nome do produto" autofocus="true">
+      <input class="input-text" type="text" name='inputDescricao' placeholder="Descricao">
+      <input class="input-text" type="text" name='inputMarca' placeholder="Marca">
+      <input class="input-text" type="text" name='inputCategoria' placeholder="Categoria">
+      <input class="input-text" type="text" name='inputPreco' placeholder="Preço">
+      <input class="input-text" type="text" name='inputQuantidade' placeholder="Quantidade em estoque">
+      <button type='submit'> Salvar </button>
+      <a href='/produto/'><button type='button'> Cancelar </button></a>
+    </form>
+</html>
+

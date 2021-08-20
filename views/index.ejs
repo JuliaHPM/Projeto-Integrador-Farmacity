@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title> <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p><%= title %> - Home</p>
+    <a href='/users/login'><button type='button' name='btLogin' disabled>Login</button></a>
+    <a href='/users/register'><button type='button' name='btCadastro' disabled>Cadastro de Usuário</button></a>
+    <br/><br/>
+    <a href='/cliente/createCliente'><button type='button' name='btCadastrarCliente'>Cadastro de Cliente</button></a>
+    <a href='/cliente/listCliente'><button type='button' name='btListCliente'>Listar Clientes</button></a>
+    <a href='/cliente/findCliente'><button type='button' name='btFindCliente'>Buscar Cliente</button></a>
+    <br/><br/>
+    <a href='/produto/createProduto'><button type='button' name='btCadastrar'>Cadastro de Produto</button></a>
+    <a href='/produto/listProduto'><button type='button' name='btList'>Listar Produtos</button></a>
+    <a href='/produto/findProduto'><button type='button' name='btFind'>Buscar Produto</button></a>
+
+
+    <!--
+    <a href='/list'><button type='button' name='btList'>Listar</button></a>
+    <a href='/create'><button type='button' name='btCreate'>Criar</button></a>
+    <a href='/find'><button type='button' name='btList'>Buscar</button></a>
+    -->
+  </body>
+</html>

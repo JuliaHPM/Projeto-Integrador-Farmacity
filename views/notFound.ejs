@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title> NOT FOUND </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta http-equiv="refresh" content="3; url=/" />
+  </head>
+  <body>
+    <% let text; %>
+    <% if (typeof titulo !== 'undefined'){ %>
+    <%      text = "Título buscado não existe!"; %>
+    <% } else if (typeof numero !== 'undefined'){ %>
+    <%      text = "Número buscado não existe!"; %>
+    <% } else text = "Algo deu errado..."; %>
+    <h3> <%= text %> </h3>
+    <br>
+    <h6>Redirecionando para home</h6>
+  </body>
+</html>

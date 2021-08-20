@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p> <%= title %></p>
+    <form action='/cliente/findCpf' method='GET'>
+      <input class="input-text" type="text" name='inputCpf' placeholder="Digite o CPF do cliente">
+      <button type='submit'> Buscar por CPF </button>
+    </form>
+    <form action='/cliente/findNome' method='GET'>
+      <input class="input-text" type="text" name='inputNome' placeholder="Digite o nome do cliente" autofocus>
+      <button type='submit'> Buscar por nome </button>
+    </form>
+    <a href='/cliente/listCliente'><button type='button'> Cancelar </button></a>
+</html>

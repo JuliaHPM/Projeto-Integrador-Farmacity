@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  
+ <style>
+   form{
+  display: inline;
+  }
+ </style>
+
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Data Nasc</th>
+        <th>CPF</th>
+        <th>RG</th>
+      </tr>
+      <tr> 
+        <td> <%= cliente.id %> </td>
+        <td> <%= cliente.nome %> </td>
+        <td> <%= cliente.email %> </td>
+        <td> <%= cliente.telefone %> </td>
+        <td> <%= cliente.data_nasc %> </td>
+        <td> <%= cliente.cpf %> </td>
+        <td> <%= cliente.rg %> </td>
+      </tr>   
+    </table>
+    
+      <form action='/cliente/<%= cliente.id %>/edit' method='GET'>
+        <button type='submit' value='edit'>Editar</button>
+       </form>
+      <form form="form-n1"action='/cliente/<%= cliente.id %>/del' method='POST'>
+        <button type='submit' value='remove'>Apagar</button>
+      </form>
+    
+    <a href='/cliente/findCliente'><button type='button' name='btList'>Buscar</button></a>
+    <a href='/cliente/listCliente'><button type='button' name='btList'>Voltar</button></a>
+ 
+  </body>
+</html>

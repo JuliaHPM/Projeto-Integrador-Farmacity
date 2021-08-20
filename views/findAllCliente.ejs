@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+      </tr>
+      
+    <% clientes.forEach( function(cliente, i) { %>
+      <tr> 
+        <td> <%= cliente.id %> </td>
+        <td> <%= cliente.nome %> </td>
+        <td> <%= cliente.email %> </td>
+        <td> <%= cliente.telefone %> </td>
+      </tr>        
+    <% }); %>
+    </table>
+    
+    <a href='/cliente'><button type='button' name='btHome'>Home</button></a>
+    <a href='/cliente/createCliente'><button type='button' name='btCreate'>Criar</button></a>
+    <a href='/cliente/findCliente'><button type='button' name='btList'>Buscar</button></a>
+</html>
