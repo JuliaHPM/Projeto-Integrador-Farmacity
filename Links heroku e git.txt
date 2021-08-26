@@ -1,0 +1,5 @@
+Projeto no Heroku:
+	https://farmacity-projeto-2021.herokuapp.com/
+
+Projeto no GitHub:
+	https://github.com/JuliaHPM/Projeto-Integrador-Farmacity

@@ -94,18 +94,20 @@
         </form>
        
     </main> 
-    <!-- Links Materialize -->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-  
+    
+    
     <!--links ajax e jquery masks-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script>$('#inputTelefone').mask("(00) 0 0000-0000");
+      $('#inputCpf').mask("000.000.000-00");
+      $('#inputRg').mask("000000000000");</script>
+
+    <!-- Links Materialize -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
     <script>
-      $('#inputTelefone').mask("(00) 0 0000-0000");
-      $('#inputCpf').mask("000.000.000-00");
-      $('#inputRg').mask("000000000000");
       
       $('#dropProduto').dropdown({
        inDuration: 300,
@@ -141,8 +143,11 @@
        $("#dropCliente").dropdown();
        $("#dropProduto").dropdown();
        $("#dropVenda").dropdown();
-        $(".button-collapse").sideNav();
+       $(".button-collapse").sideNav();
+       
       });  
+
+     
     </script> 
   </body>  
 </html>
