@@ -3,8 +3,8 @@ Projeto de um sistema para farmácia.
 
 - Cadastro Cliente
 - Cadastro Produto
+- Cadastro Venda
 
 Adicionar:
- - Cadastro Venda
  - Controle de Estoque
  - Login
