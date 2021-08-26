@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ProdutoSchema = new Schema({
+const VendaSchema = new Schema({
 	cliente: String,
-	produtos:[
+	/*produtos:[
 		{
 			type: Schema.Types.ObjectId,
 			ref:'Produto'
@@ -12,9 +12,9 @@ const ProdutoSchema = new Schema({
 		{
 			type: Schema.Types.ObjectId,
 			ref:'Produto'
-		}],
-	valor_total: { type: "numberDecimal" },
-	data_venda: { type: Date, default: Date.now }
+		}],*/
+	totalVenda: { type: String },
+	dataVenda: { type: String }
 });
 
-module.exports = mongoose.model('Produto', ProdutoSchema);
+module.exports = mongoose.model('Venda', VendaSchema);

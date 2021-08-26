@@ -1,32 +1,153 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/shop.png" />
     <title>Farmacity - <%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Links Materialize -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>     
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Telefone</th>
-      </tr>
-      
-    <% clientes.forEach( function(cliente, i) { %>
-      <tr> 
-        <td> <%= cliente.id %> </td>
-        <td> <%= cliente.nome %> </td>
-        <td> <%= cliente.email %> </td>
-        <td> <%= cliente.telefone %> </td>
-      </tr>        
-    <% }); %>
-    </table>
+     <!--Navbar-->
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="/cliente/createCliente">Cadastrar</a></li>
+      <li><a href="/cliente/listCliente">Listar</a></li>
+      <!--<li class="divider"></li>-->
+      <li><a href="/cliente/findCliente">Pesquisar</a></li>
+    </ul>
+    <ul id="dropdown2" class="dropdown-content">
+      <li><a href="/produto/createProduto">Cadastrar</a></li>
+      <li><a href="/produto/listProduto">Listar</a></li>
+      <li><a href="/produto/findProduto">Pesquisar</a></li>
+    </ul>
+    <ul id="dropdown3" class="dropdown-content">
+      <li><a href="/venda/createVenda">Cadastrar</a></li>
+      <li><a href="/venda/listVenda">Listar</a></li>
+     <!-- <li><a href="/produto/findProduto">Pesquisar</a></li>-->
+    </ul>
     
-    <a href='/cliente'><button type='button' name='btHome'>Home</button></a>
-    <a href='/cliente/createCliente'><button type='button' name='btCreate'>Criar</button></a>
-    <a href='/cliente/findCliente'><button type='button' name='btList'>Buscar</button></a>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo" style="padding:9px 15px;"><h5>Farmacity</h5></a>
+        <a href="#" data-activates="menu-mobile" class="button-collapse">
+          <i class="material-icons">menu</i>
+         </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/"><i class="material-icons left"><img src="https://img.icons8.com/office/16/000000/home--v1.png" style="margin-bottom: 3px;  width: 20px;"/></i>Home</a></li>
+          <li><a href="#" id="dropCliente" class="dropdown-trigger" data-activates="dropdown1" data-target="dropdown1"><i class="material-icons left"><img src="https://img.icons8.com/officel/16/000000/conference-call.png" style="margin-bottom: 3px;  width: 20px;"/></i>Clientes</a></li>
+          <li><a href="#" id="dropProduto" class="dropdown-trigger" data-activates="dropdown2" ><i class="material-icons left"><img src="https://img.icons8.com/color/50/000000/pills.png" style="margin-bottom: 3px; width: 20px;"/></i>Produtos</a></li>
+          <li><a href="#" id="dropVenda" class="dropdown-trigger" data-activates="dropdown3" ><i class="material-icons left"><img src="https://img.icons8.com/officel/16/000000/sales-performance.png" style="margin-bottom: 3px; width: 20px;"/></i>Vendas</a></li>
+          
+          <li><a href="#">Login</a></li>
+        </ul>
+        <ul class="side-nav" id="menu-mobile">
+          <li><a href="/"><i class="material-icons left"><img src="https://img.icons8.com/office/16/000000/home--v1.png" style="margin-bottom: 3px;  width: 20px;"/></i><b>Home</b></a></li>
+          <li><a href="#"><i class="material-icons left"><img src="https://img.icons8.com/officel/16/000000/conference-call.png" style="margin-bottom: 3px;  width: 20px;"/></i><b>Clientes</b></a></li>
+          <li><a href="/cliente/createCliente">Cadastrar Cliente</a></li>
+          <li><a href="/cliente/listCliente">Listar Clientes</a></li>
+          <li><a href="/cliente/findCliente">Pesquisar Cliente</a></li>
+          <li><a href="#"><i class="material-icons left"><img src="https://img.icons8.com/color/50/000000/pills.png" style="margin-bottom: 3px; width: 20px;"/></i><b>Produtos</b></a></li>
+          <li><a href="/produto/createProduto">Cadastrar Produto</a></li>
+          <li><a href="/produto/listProduto">Listar Produtos</a></li>
+          <li><a href="/produto/findProduto">Pesquisar Produtos</a></li>
+          <li><a href="#"><i class="material-icons left"><img src="https://img.icons8.com/officel/16/000000/sales-performance.png" style="margin-bottom: 3px; width: 20px;"/></i><b>Vendas</b></a></li>
+          <li><a href="/venda/createVenda">Cadastrar Venda</a></li>
+          <li><a href="/venda/listVenda">Listar Vendas</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+     </nav>
+     <!--fim Navbar-->
+
+    <main>
+      <h5><%= title %></h5>
+      <div class="right-align" style="margin-bottom:10px;">
+        <form action='/cliente/findNome' method='GET' style="display: inline;">
+          <input class="input-text" type="text" name='inputNome' placeholder="Digite o nome do cliente" style="width: 250px;">
+          <button type='submit'>Buscar</button>
+        </form>
+        <a href='/cliente/createCliente' title="Adicionar Cliente" name='btCreate'> <img src="https://img.icons8.com/material/24/000000/add-user-male--v1.png" style="margin-right:10px;"/></a>
+        <a href='/cliente/findCliente' title="Pesquisar Cliente" name='btList'> <img src="https://img.icons8.com/material/24/000000/search.png"/></a>
+      </div>
+      <div class="scroll-table">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Data Nascimento</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Ação</th>
+          </tr>
+          
+        <% clientes.forEach( function(cliente, i) { %>
+          <tr> 
+            <td> <%= cliente.id %> </td>
+            <td> <%= cliente.nome %> </td>
+            <td> <%= cliente.email %> </td>
+            <td> <%= cliente.telefone %> </td>
+            <td> <%= cliente.data_nasc %> </td>
+            <td> <%= cliente.cpf %> </td>
+            <td> <%= cliente.rg %> </td>
+            <td>
+              <form form="form-n2" action='/cliente/<%= cliente.id %>/del' method='POST'>
+                <button class="lixeira" title="Excluir" type='submit' value='remove'><img src='https://img.icons8.com/material-sharp/24/000000/trash.png'/></button>
+              </form>
+            </td>
+          </tr>        
+        <% }); %>
+        </table>
+      </div>
+     
+    </main>
+    <!-- Links Materialize -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  
+    <script>
+      
+      $('#dropProduto').dropdown({
+       inDuration: 300,
+       outDuration: 225,
+       constrain_width: false, // Does not change width of dropdown to that of the activator
+       hover: true, // Activate on hover
+       gutter: 0, // Spacing from edge
+       belowOrigin: true, // Displays dropdown below the button
+       alignment: 'left' // Displays dropdown with edge aligned to the left of button
+      });
+
+      $('#dropCliente').dropdown({
+       inDuration: 300,
+       outDuration: 225,
+       constrain_width: false, // Does not change width of dropdown to that of the activator
+       hover: true, // Activate on hover
+       gutter: 0, // Spacing from edge
+       belowOrigin: true, // Displays dropdown below the button
+       alignment: 'left' // Displays dropdown with edge aligned to the left of button
+      });
+
+      $('#dropVenda').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: false, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: true, // Displays dropdown below the button
+        alignment: 'left' // Displays dropdown with edge aligned to the left of button
+       });
+
+      $(function(){
+       $("#dropCliente").dropdown();
+       $("#dropProduto").dropdown();
+       $("#dropVenda").dropdown();
+        $(".button-collapse").sideNav();
+      }); 
+    </script> 
+  </body>
 </html>

@@ -13,37 +13,40 @@
 
   </head>
   <body>
-    <h1><%= title %></h1>
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Descricao</th>
-        <th>Marca</th>
-        <th>Categoria</th>
-        <th>Preço</th>
-        <th>Quantidade</th>
-      </tr>
-      <tr> 
-        <td> <%= produto.id %> </td>
-        <td> <%= produto.nome %> </td>
-        <td> <%= produto.descricao %> </td>
-        <td> <%= produto.marca %> </td>
-        <td> <%= produto.categoria %> </td>
-        <td> <%= produto.preco %> </td>
-        <td> <%= produto.quantidade %> </td>
-      </tr>   
-    </table>
-    
-      <form action='/produto/<%= produto.id %>/edit' method='GET'>
-        <button type='submit' value='edit'>Editar</button>
-       </form>
-      <form action='/produto/<%= produto.id %>/del' method='POST'>
-        <button type='submit' value='remove'>Apagar</button>
-      </form>
-    
-    <a href='/produto/findProduto'><button type='button' name='btList'>Buscar</button></a>
-    <a href='/produto/listProduto'><button type='button' name='btList'>Voltar</button></a>
- 
+    <main>
+      <h1><%= title %></h1>
+      <div class="scroll-table">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th>Marca</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+          </tr>
+          <tr> 
+            <td> <%= produto.id %> </td>
+            <td> <%= produto.nome %> </td>
+            <td> <%= produto.descricao %> </td>
+            <td> <%= produto.marca %> </td>
+            <td> <%= produto.categoria %> </td>
+            <td> <%= produto.preco %> </td>
+            <td> <%= produto.quantidade %> </td>
+          </tr>   
+        </table>
+      </div>
+      
+        <form action='/produto/<%= produto.id %>/edit' method='GET'>
+          <button type='submit' value='edit'>Editar</button>
+        </form>
+        <form action='/produto/<%= produto.id %>/del' method='POST'>
+          <button type='submit' value='remove'>Apagar</button>
+        </form>
+      
+      <a href='/produto/findProduto'><button type='button' name='btList'>Buscar</button></a>
+      <a href='/produto/listProduto'><button type='button' name='btList'>Voltar</button></a>
+    </main>
   </body>
 </html>

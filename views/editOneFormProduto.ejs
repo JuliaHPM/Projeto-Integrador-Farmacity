@@ -3,20 +3,43 @@
   <head>
     <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
     <title>Farmacity - <%= title %></title>
+
+      <!-- Links Materialize -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>     
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <main class="diminuir-width">
+    <h5><%= title %></h5>
   
     <form action='/produto/<%= produto.id %>/edit' method='POST'>
+      <label for="inputNome"><strong>Nome</strong></label>
       <input class="input-text" type="text" name='inputNome' placeholder="Nome do produto" value="<%= produto.nome %>" autofocus="true">
+      
+      <label for="inputDescricao"><strong>Descrição</strong></label>
       <input class="input-text" type="text" name='inputDescricao' value="<%= produto.descricao %>">
+      
+      <label for="inputMarca"><strong>Marca</strong></label>
       <input class="input-text" type="text" name='inputMarca' value="<%= produto.marca %>">
-      <input class="input-text" type="text" name='inputCategoria' value="<%= produto.categoria %>">
-      <input class="input-text" type="text" name='inputPreco' value="<%= produto.preco %>">
-      <input class="input-text" type="text" name='inputQuantidade' value="<%= produto.quantidade %>">
 
-      <button type='submit'> Salvar </button>
-    </form>
-    <a href='/produto/<%= produto.id %>'><button type='button'> Cancelar </button></a>
+      <label for="inputCategoria"><strong>Categoria</strong></label>
+      <input class="input-text" type="text" name='inputCategoria' value="<%= produto.categoria %>">
+
+      <label for="inputPreco"><strong>Preço</strong></label>
+      <input class="input-text" type="text" name='inputPreco' value="<%= produto.preco %>">
+
+      <label for="inputQuantidade"><strong>Quantidade</strong></label>
+      <input class="input-text" type="text" name='inputQuantidade' value="<%= produto.quantidade %>">
+      
+      <div class="center-align">
+        <a href='/produto/<%= produto.id %>'><button type='button'> Cancelar </button></a>
+        <button type='submit'> Salvar </button>
+      </div>
+      
+      </form>
+    </main>
+  </body>
 </html>

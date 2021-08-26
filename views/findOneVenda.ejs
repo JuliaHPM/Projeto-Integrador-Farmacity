@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/shop.png" />
+    <title>Farmacity - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  
+ <style>
+   form{
+  display: inline;
+  }
+ </style>
+
+  </head>
+  <body>
+    <main>
+      <h1><%= title %></h1>
+      <div class="scroll-table">
+      <table>
+        <tr>
+          <th>ID Venda</th>
+          <th>Cliente</th>
+          <th>Total Venda</th>
+          <th>Data Venda</th>
+          <th>Ação</th>
+        </tr>
+        <% vendas.forEach( function(venda) { %>
+        <tr> 
+          <td> <%= venda.id %> </td>
+          <td> <%= venda.cliente %> </td>
+          <td> <%= venda.totalVenda %> </td>
+          <td> <%= venda.dataVenda %> </td>
+          <td>
+            <form form="form-n1"action='/venda/<%= venda.id %>/del' method='POST'>
+              <button class="lixeira" title="Excluir venda" type='submit' value='remove'><img src='https://img.icons8.com/material-sharp/24/000000/trash.png'/></button>
+            </form>
+          </td>
+        </tr> <!--<form action='/<%= venda.id %>/edit' method='GET'>
+          <button type='submit' value='edit'>Editar</button>
+          <img src="https://img.icons8.com/material/24/000000/edit.png"/> 
+        </form>-->
+        
+      <!--
+      <a href='/findVenda'><button type='button' name='btList'>Buscar</button></a>-->
+        <% }); %>  
+      </table>
+    </div>
+        
+      <a href='/venda/listVenda'><button type='button' name='btList'>Voltar</button></a>
+    
+    </main>
+  </body>
+</html>

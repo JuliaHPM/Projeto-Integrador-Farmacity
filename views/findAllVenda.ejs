@@ -63,35 +63,49 @@
      </nav>
      <!--fim Navbar-->
 
-    <main class="diminuir-width">
-
+    <main>
       <h5><%= title %></h5>
-
-      <form action='/produto' method='POST'>
-        <label for="inputNome"><strong>Nome</strong></label>
-        <input class="input-text" type="text" name='inputNome' placeholder="Nome do produto" autofocus="true" required>
+      
+      <div class="right-align" style="margin-bottom:10px;">
         
-        <label for="inputDescricao"><strong>Descrição</strong></label>
-        <input class="input-text" type="text" name='inputDescricao' placeholder="Descrição" required>
-        
-        <label for="inputMarca"><strong>Marca</strong></label>
-        <input class="input-text" type="text" name='inputMarca' placeholder="Marca" required>
-
-        <label for="inputCategoria"><strong>Categoria</strong></label>
-        <input class="input-text" type="text" name='inputCategoria' placeholder="Categoria" required>
-
-        <label for="inputPreco"><strong>Preço</strong></label>
-        <input class="input-text" type="text" name='inputPreco' placeholder="Preço" required>
-
-        <label for="inputQuantidade"><strong>Quantidade</strong></label>
-        <input class="input-text" type="text" name='inputQuantidade' placeholder="Quantidade em estoque" required>
-
-        <div class="center-align">
-          <a href='/'><button type='button'> Cancelar </button></a>
-          <button type='submit'> Salvar </button>
-        </div>
+        <!-- Pesquisa por Cliente -->
+      <form action='/venda/findCliente' method='GET' style="display: inline;">
+        <input class="input-text" type="text" name='inputCliente' placeholder="Digite o nome do cliente" style="width: 250px;">
+        <button type='submit'>Buscar</button>
       </form>
+      <form action='/venda/findId' method='GET' style="display: inline;">
+        <input class="input-text" type="text" name='inputId' placeholder="Digite o ID da venda" style="width: 250px;">
+        <button type='submit'>Buscar</button>
+      </form>
+        <a href='/venda/createVenda' name='btCreate' title="Adicionar Venda" class="valign-wrapper"><img src="https://img.icons8.com/material/24/000000/plus--v1.png" style="margin-right:10px;"/>Adicionar Venda</a>
+        <!--<a href='/findVenda' name='btList' title="Pesquisar Venda"> <img src="https://img.icons8.com/material/24/000000/search.png"/></a>-->
+      </div>
+      <div class="scroll-table">
+        <table>
+          <tr>
+            <th>ID Venda</th>
+            <th>Cliente</th>
+            <th>Total Venda</th>
+            <th>Data Venda</th>
+            <th>Ação</th>
+          </tr>
+          
+        <% vendas.forEach( function(venda) { %>
+          <tr> 
+            <td> <%= venda.id %> </td>
+            <td> <%= venda.cliente %> </td>
+            <td> <%= venda.totalVenda %> </td>
+            <td> <%= venda.dataVenda %> </td>
+            <td>
+              <form form="form-n1"action='/venda/<%= venda.id %>/del' method='POST'>
+              <button class="lixeira" title="Excluir" type='submit' value='remove'><img src='https://img.icons8.com/material-sharp/24/000000/trash.png'/></button>
+            </form></td>
+          </tr>        
+        <% }); %>
+        </table>
+      </div>
     </main>
+
     <!-- Links Materialize -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
@@ -133,9 +147,7 @@
        $("#dropProduto").dropdown();
        $("#dropVenda").dropdown();
         $(".button-collapse").sideNav();
-      });
-  
+      });  
     </script> 
-  </body>   
+  </body>  
 </html>
-

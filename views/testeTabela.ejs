@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Inserindo linhas em uma tabela com JavaScript</title>
+<script language="javascript">
+        // Função responsável por inserir linhas na tabela
+        function inserirLinhaTabela() {
+
+            // Captura a referência da tabela com id “minhaTabela”
+            var table = document.getElementById("minhaTabela");
+            // Captura a quantidade de linhas já existentes na tabela
+            var numOfRows = table.rows.length;
+            // Captura a quantidade de colunas da última linha da tabela
+            var numOfCols = table.rows[numOfRows-1].cells.length;
+
+            // Insere uma linha no fim da tabela.
+            var newRow = table.insertRow(numOfRows);
+ 
+            // Faz um loop para criar as colunas
+            for (var j = 0; j < numOfCols; j++) {
+                // Insere uma coluna na nova linha 
+                newCell = newRow.insertCell(j);
+                // Insere um conteúdo na coluna
+                newCell.innerHTML = "Linha "+ numOfRows + " – Coluna "+ j;
+            }
+
+        }
+
+        function adicionaLinha(idTabela) {
+            var tabela = document.getElementById(idTabela);
+            var numeroLinhas = tabela.rows.length;
+            var linha = tabela.insertRow(numeroLinhas);
+            var celula1 = linha.insertCell(0);
+            var celula2 = linha.insertCell(1);   
+            var celula3 = linha.insertCell(2); 
+            var celula4 = linha.insertCell(3); 
+            var celula5 = linha.insertCell(4); 
+
+            celula1.innerHTML = 'produto '+ Math.floor((Math.random() * 100) + 1); 
+            celula2.innerHTML =  Math.floor((Math.random() * 100) + 1); 
+            celula3.innerHTML =  Math.floor((Math.random() * 100) + 1);
+            celula4.innerHTML =  Math.floor((Math.random() * 100) + 1);
+            celula5.innerHTML =  "<button onclick='removeLinha(this)'>Remover</button>";
+        }
+
+        // funcao remove uma linha da tabela
+        function removeLinha(linha) {
+            var i=linha.parentNode.parentNode.rowIndex;
+            document.getElementById('tbl').deleteRow(i);
+        }  
+</script>
+</head>
+<body>
+        <!-- Tabela simples contendo linhas e colunas -->
+        <table id="tbl" style="border:1px;">
+            <tr>
+                <th>ID produto</th>
+                <th>Nome produto</th>
+                <th>Quantidade produto</th>
+                <th>Total produto</th>
+                <th>Ação</th>
+            </tr>
+            
+        </table>
+        <!-- Este botão quando acionado irá chamar a função responsável em inserir a linha na tabela -->
+        <input type="button" value="Inserir Linha" onclick="adicionaLinha('tbl')"  />
+</body>
+</html>

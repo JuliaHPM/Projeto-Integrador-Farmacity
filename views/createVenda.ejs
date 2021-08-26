@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/shop.png"/>
+    <title>Farmacity - <%= title %></title>
+
+    <!-- Links Materialize -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>     
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <!--Navbar-->
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="/cliente/createCliente">Cadastrar</a></li>
+      <li><a href="/cliente/listCliente">Listar</a></li>
+      <!--<li class="divider"></li>-->
+      <li><a href="/cliente/findCliente">Pesquisar</a></li>
+    </ul>
+    <ul id="dropdown2" class="dropdown-content">
+      <li><a href="/produto/createProduto">Cadastrar</a></li>
+      <li><a href="/produto/listProduto">Listar</a></li>
+      <li><a href="/produto/findProduto">Pesquisar</a></li>
+    </ul>
+    <ul id="dropdown3" class="dropdown-content">
+      <li><a href="/venda/createVenda">Cadastrar</a></li>
+      <li><a href="/venda/listVenda">Listar</a></li>
+     <!-- <li><a href="/produto/findProduto">Pesquisar</a></li>-->
+    </ul>
+    
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo" style="padding:9px 15px;"><h5>Farmacity</h5></a>
+        <a href="#" data-activates="menu-mobile" class="button-collapse">
+          <i class="material-icons">menu</i>
+         </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/"><i class="material-icons left"><img src="https://img.icons8.com/office/16/000000/home--v1.png" style="margin-bottom: 3px;  width: 20px;"/></i>Home</a></li>
+          <li><a href="#" id="dropCliente" class="dropdown-trigger" data-activates="dropdown1" data-target="dropdown1"><i class="material-icons left"><img src="https://img.icons8.com/officel/16/000000/conference-call.png" style="margin-bottom: 3px;  width: 20px;"/></i>Clientes</a></li>
+          <li><a href="#" id="dropProduto" class="dropdown-trigger" data-activates="dropdown2" ><i class="material-icons left"><img src="https://img.icons8.com/color/50/000000/pills.png" style="margin-bottom: 3px; width: 20px;"/></i>Produtos</a></li>
+          <li><a href="#" id="dropVenda" class="dropdown-trigger" data-activates="dropdown3" ><i class="material-icons left"><img src="https://img.icons8.com/officel/16/000000/sales-performance.png" style="margin-bottom: 3px; width: 20px;"/></i>Vendas</a></li>
+          
+          <li><a href="#">Login</a></li>
+        </ul>
+        <ul class="side-nav" id="menu-mobile">
+          <li><a href="/"><i class="material-icons left"><img src="https://img.icons8.com/office/16/000000/home--v1.png" style="margin-bottom: 3px;  width: 20px;"/></i><b>Home</b></a></li>
+          <li><a href="#"><i class="material-icons left"><img src="https://img.icons8.com/officel/16/000000/conference-call.png" style="margin-bottom: 3px;  width: 20px;"/></i><b>Clientes</b></a></li>
+          <li><a href="/cliente/createCliente">Cadastrar Cliente</a></li>
+          <li><a href="/cliente/listCliente">Listar Clientes</a></li>
+          <li><a href="/cliente/findCliente">Pesquisar Cliente</a></li>
+          <li><a href="#"><i class="material-icons left"><img src="https://img.icons8.com/color/50/000000/pills.png" style="margin-bottom: 3px; width: 20px;"/></i><b>Produtos</b></a></li>
+          <li><a href="/produto/createProduto">Cadastrar Produto</a></li>
+          <li><a href="/produto/listProduto">Listar Produtos</a></li>
+          <li><a href="/produto/findProduto">Pesquisar Produtos</a></li>
+          <li><a href="#"><i class="material-icons left"><img src="https://img.icons8.com/officel/16/000000/sales-performance.png" style="margin-bottom: 3px; width: 20px;"/></i><b>Vendas</b></a></li>
+          <li><a href="/venda/createVenda">Cadastrar Venda</a></li>
+          <li><a href="/venda/listVenda">Listar Vendas</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+     </nav>
+     <!--fim Navbar-->
+
+    <main class="diminuir-width-cadastro-venda">
+        <h4><%= title %></h4>
+
+        <form action='/venda/createVenda' method='POST'>
+          <label><strong>Cliente</strong></label>
+          <select id="cboClientes" name="cboClientes">
+            <option value=""></option>
+            <% clientes.forEach( function(cliente) { %>
+              <option value="<%= cliente.id %>"> <%= cliente.nome %> </option>>     
+            <% }); %>
+          </select>
+
+          <!-- combobox produtos-->
+          <div class="row" style="width: 100%;">
+            <div class="col s12 m6">
+              <label for="inputProduto"><strong>Produto</strong></label>
+              <select id="cboProdutos" name="cboProdutos" style="width: 250px;" required>
+                <option value=""></option>
+                <% produtos.forEach( function(produto,i) { %>
+                  <option id="optionProduto" value="<%= produto.id %>/<%= produto.preco %>/<%= produto.nome %>" name="produto<%i%>"> <%= produto.nome %> </option>>     
+                <% }); %>
+              </select>
+            </div>
+            <div class="col s12 m4 ">
+              <label for="inputQuantidadeComprada"><strong>Quantidade Comprada</strong></label>
+              <input style="width: 100px;" type="number" id='inputQuantidadeComprada' name='inputQuantidadeComprada' placeholder="Quant." required min="0">
+            </div>
+            <div class="col s12 m2 ">
+              <!--  chamar a função de inserir a linha na tabela -->
+              <button type="button" id="inserirProduto" onclick="funcoes()">Inserir</button>
+            </div>
+          </div>
+          
+          <!--<button type="button" onclick="chamateste()">chamateste</button>-->
+
+          <!-- tabela produtos comprados-->
+          <table id="tbl" style="border:1px;">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Total item</th>
+                <th>Ação</th>
+            </tr>
+            <!-- linhas serão adicionadas com o botao de adicionar produto -->
+        </table>
+        
+        <div class="row">
+          <div class="col sm12 m6"> 
+            <label for="inputTotalVenda"><strong>Total Venda</strong></label>
+            <input readonly class="input-text" type="text" id="inputTotalVenda" name='inputTotalVenda' placeholder="Total Venda" required >
+          </div>
+          <div class="col sm12 m6">
+            <label for="inputData"><strong>Data</strong></label>
+            <input readonly class="input-text" type="text" id="inputData" name='inputData' required >
+          </div>
+        </div>
+          <div class="center-align">
+            <a href='/'><button type='button'> Cancelar </button></a>
+            <button type='submit'> Salvar </button>
+          </div>
+        </form>
+       
+    </main> 
+    <!-- Links Materialize -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <!--jquery -->
+    <script src="jquery-3.5.1.min.js"></script>
+
+    <script>
+
+      function funcoes() {
+        adicionaLinha('tbl');
+        calculaTotalVenda();
+      }
+
+     function chamateste(){
+       teste();
+     }
+
+     function teste(){
+      //não consegui pegar os valores de produto então fiz gambiarra 
+      idEpreco = document.getElementById("cboProdutos").value;
+      array = idEpreco.split("/");
+      valorProduto = array[1];
+      idProduto = array[0];
+      alert(idProduto);
+     }
+
+    function adicionaLinha(idTabela) {
+      
+      quantidadeComprada =$("#inputQuantidadeComprada").val();
+      //não consegui pegar os valores de produto então fiz gambiarra 
+      idEpreco = document.getElementById("cboProdutos").value;
+      array = idEpreco.split("/");
+      idProduto = array[0];
+      valorProduto = array[1];
+      nomeProduto = array[2];
+      valorProduto = valorProduto.replace(",",".");
+
+      var calculo = (parseFloat(valorProduto) * parseFloat(quantidadeComprada)).toFixed(2);
+
+      totalItem = String(calculo); 
+
+      var tabela = document.getElementById(idTabela);
+      var numeroLinhas = tabela.rows.length;
+      var linha = tabela.insertRow(numeroLinhas);
+      var celula1 = linha.insertCell(0);
+      var celula2 = linha.insertCell(1);   
+      var celula3 = linha.insertCell(2); 
+      var celula4 = linha.insertCell(3); 
+      var celula5 = linha.insertCell(4); 
+      
+      celula1.innerHTML = idProduto; //id produto
+      celula2.innerHTML = nomeProduto; //nome produto
+      celula3.innerHTML =  quantidadeComprada; //quantidade comprada
+      celula4.innerHTML =  "R$ " + totalItem; //totalItem
+      celula5.innerHTML =  "<a onclick='removeLinha(this)'><img src='https://img.icons8.com/material-sharp/24/000000/trash.png'/></a>";
+    
+    }
+
+    // funcao remove uma linha da tabela
+    function removeLinha(linha) {
+        var i=linha.parentNode.parentNode.rowIndex;
+        document.getElementById('tbl').deleteRow(i);
+        calculaTotalVenda();
+    }  
+
+    function calculaTotalVenda() {
+      var tabela = document.getElementById("tbl");
+      var numeroLinhas = tabela.rows.length;
+      //alert(tabela.rows[1].cells[3].textContent);
+      totalVenda=0;
+      for(var i=1; i<=numeroLinhas;i++){
+        totalItem = tabela.rows[i].cells[3].textContent;
+        totalItem = totalItem.replace("R$ ","");
+        totalVenda = (parseFloat(totalVenda) + parseFloat(totalItem)).toFixed(2);
+        var totalVenda = String(totalVenda);
+        
+        document.getElementById("inputTotalVenda").value = "R$ " + totalVenda;
+
+        //data atual
+        var data = new Date();
+        var mes = data.getMonth()+1;
+        var dataHora = data.getDate()+"/"+mes+"/"+data.getFullYear()+" "+data.getHours()+":"+data.getMinutes()+":"+data.getSeconds();
+        document.getElementById("inputData").value = dataHora;
+      }
+    }
+
+      
+    $('#dropProduto').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    });
+
+    $('#dropCliente').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    });
+
+    $('#dropVenda').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: false, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: true, // Displays dropdown below the button
+        alignment: 'left' // Displays dropdown with edge aligned to the left of button
+       });
+
+      $(function(){
+       $("#dropCliente").dropdown();
+       $("#dropProduto").dropdown();
+       $("#dropVenda").dropdown();
+        $(".button-collapse").sideNav();
+      }); 
+
+      /* const mongoose = require('mongoose');
+      const Produto = require('../models/produto');
+
+      async function pegarDadosproduto(){
+        idProduto = document.getElementById("cboProdutos").value;
+        var produto = await Produto.findById(idProduto);
+        var nomeProduto = produto.nome;
+        var produtoPreco = produto.preco;
+     } */
+     /*$(document).ready(function () {
+        
+      $("#cboProdutos").on('change', function () {
+        alert('entrou');
+          selecionado();
+      })
+      });
+
+        pegar valores da combo box 
+      var comboProdutos = $("#cboProdutos");
+      var produtoPreco = document.getElementById("cboProdutos").value
+      //var produtoPreco = comboProdutos.options[comboProdutos.selectedIndex].value;
+      var inputTotalItem= $("#inputTotalItem"); 
+      
+      function selecionado(){
+        var preco = document.getElementById("cboProdutos").value;
+        preco = preco.replace(",",".");
+        preco = parseFloat(preco);
+        document.getElementById("demo").innerHTML = "You selected: " + String(preco);
+        return true;
+      }
+
+      function quantidade(){
+        var quantidade = $("#inputQuantidadeComprada").val();
+        document.getElementById("demo2").innerHTML = "You selected: " + quantidade;
+        return true;
+      }
+
+      function calcularItem(){
+        //alert('entrou');
+        valorProduto =  document.getElementById("cboProdutos").value;
+        if(valorProduto){
+          valorProduto = valorProduto.replace(",",".");
+
+          var calculo = (parseFloat(valorProduto) * parseFloat($("#inputQuantidadeComprada").val())).toFixed(2);
+
+          totalItem = String(calculo);
+          //document.getElementById("demo2").innerHTML = "Total item: R$ " + totalItem;
+          document.getElementById("inputTotalItem").value = "R$ " + totalItem;
+          document.getElementById("inputTotalVenda").value = "R$ " + totalItem;
+          return true;
+        }else{
+          return false;
+        }
+        
+      }*/
+    </script> 
+  </body>  
+</html>
+

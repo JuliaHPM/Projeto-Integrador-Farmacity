@@ -3,20 +3,43 @@
   <head>
     <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/drugstore.png" />
     <title>Farmacity - <%= title %></title>
+
+    <!-- Links Materialize -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>     
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p><%= title %></p>
-    <form action='/cliente/<%= cliente.id %>/edit' method='POST'>
-      <input class="input-text" type="text" name='inputNome' placeholder="Nome do cliente" value="<%= cliente.nome %>" autofocus="true">
-      <input class="input-text" type="text" name='inputEmail' placeholder="cliente@gmail.com" value="<%= cliente.email %>">
-      <input class="input-text" type="text" name='inputData_nasc' placeholder="23/02/1996" value="<%= cliente.data_nasc %>">
-      <input class="input-text" type="text" name='inputTelefone' placeholder="(54) 9 9765-9999" value="<%= cliente.telefone %>">
-      <input class="input-text" type="text" name='inputCpf' placeholder="___.___.___-___" value="<%= cliente.cpf %>">
-      <input class="input-text" type="text" name='inputRg' placeholder="__________" value="<%= cliente.rg %>">
+    <main class="diminuir-width">
+      <h5><%= title %></h5>
+      <!--<p>Edite as informações do cliente</p>-->
+      <form action='/cliente/<%= cliente.id %>/edit' method='POST'>
+        <label for="inputNome"><strong>Nome</strong></label>
+        <input class="input-text" type="text" name='inputNome' placeholder="Nome do cliente" value="<%= cliente.nome %>" autofocus="true">
+        
+        <label for="inputEmail"><strong>Email</strong></label>
+        <input class="input-text" type="text" name='inputEmail' placeholder="cliente@gmail.com" value="<%= cliente.email %>">
+        
+        <label for="inputData_nasc"><strong>Data de nascimento</strong></label>
+        <input class="input-text" type="text" name='inputData_nasc' placeholder="23/02/1996" value="<%= cliente.data_nasc %>">
+        
+        <label for="inputTelefone"><strong>Telefone</strong></label>
+        <input class="input-text" type="text" name='inputTelefone' placeholder="(54) 9 9765-9999" value="<%= cliente.telefone %>">
+        
+        <label for="inputCpf"><strong>CPF</strong></label>
+        <input class="input-text" type="text" name='inputCpf' placeholder="___.___.___-___" value="<%= cliente.cpf %>">
+        
+        <label for="inputRg"><strong>RG</strong></label>
+        <input class="input-text" type="text" name='inputRg' placeholder="__________" value="<%= cliente.rg %>">
 
-      <button type='submit'> Salvar </button>
-    </form>
-    <a href='/cliente/<%= cliente.id %>'><button type='button'> Cancelar </button></a>
+        <div class="center-align">
+          <a href='/cliente/<%= cliente.id %>'><button type='button'> Cancelar </button></a>
+          <button type='submit'> Salvar </button>
+        </div>
+
+      </form>
+    </main>
+  </body>
 </html>

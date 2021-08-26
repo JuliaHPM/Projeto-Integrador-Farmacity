@@ -1,18 +1,27 @@
 body {
-  padding: 50px;
+  width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+main{
+  padding: 50px;
 }
 
+/* cor da navbar */
+.nav-wrapper{
+  background-color: #4CAF50;
+}
 
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 20px;
+  overflow: scroll;
+}
+
+.scroll-table{
+  overflow-x:auto;
 }
 
 td, th {
@@ -23,11 +32,11 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color: rgb(212, 255, 199);
+  background-color: rgba(240, 240, 240, 0.781) ;
 }
 
 tr:hover{
-  background-color: rgb(171, 247, 148);
+  background-color: rgb(228, 255, 220);
 }
 
 button {
@@ -56,6 +65,18 @@ button:disabled{
   color: black;
 }
 
+.lixeira{
+    all: unset;
+    cursor: pointer;
+    outline: revert;
+}
+
+.lixeira:hover{
+  border: none;
+  background-color:transparent;
+  color: none;
+}
+
 input[type=text], select {
   /*width: 100%;*/
   padding: 12px 20px;
@@ -64,4 +85,45 @@ input[type=text], select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.diminuir-width-cadastro-venda{
+  width: 60%;
+  margin: auto;
+}
+.diminuir-width{
+  width: 40%;
+  margin: auto;
+}
+
+
+@media screen and ( max-width: 1200px){
+  .diminuir-width{
+    width: 50%;
+  }
+  .diminuir-width-cadastro-venda{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .diminuir-width{
+    width: 90%;
+  }
+  .diminuir-width-cadastro-venda{
+    width: 90%;
+  }
+}
+
+footer {
+  background-color: rgb(235, 255, 215);
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  padding-top: 10px;
+}
+
+footer p{
+  padding-left: 20px;
 }

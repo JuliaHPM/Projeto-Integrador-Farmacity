@@ -16,6 +16,9 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const clienteRouter = require('./routes/cliente');
 const produtoRouter = require('./routes/produto');
+const vendaRouter = require('./routes/venda');
+
+//const BD = require('bd.env');
 
 mongoose.connect('mongodb+srv://juliaHPM:senhabd@cluster0.ivljw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true , useUnifiedTopology: true },);
@@ -53,6 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', usersRouter);
 app.use('/cliente', clienteRouter);
 app.use('/produto', produtoRouter);
+app.use('/venda', vendaRouter);
 app.use('/', indexRouter);
 
 

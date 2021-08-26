@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-//const Note = require('../models/note');
 const Produto = require('../models/produto');
 const router = express.Router();
 
@@ -44,7 +43,8 @@ router.post('/', async (req,res,next) =>{
 	  preco: preco,
 	  quantidade: quantidade
   });
-  res.redirect(`produto/${produto.id}`);
+  res.redirect(`/produto/listProduto`);
+  //res.redirect(`/produto/${produto.id}`);
 });
 
 /* GET formulário de pesquisa de produto */
@@ -65,7 +65,7 @@ router.get('/findMarca', async (req,res,next) => {
 router.get('/findNome', async (req,res,next) => {
   let result = await Produto.findOne({nome:req.query.inputNome});
   if (result)
-    res.render('findOneProduto',{title:'Pesquisa por Nome',produto:result});
+    res.render('findOneProduto',{title:'Pesquisa por nome',produto:result});
   else
     res.render('notFound',{nome:req.query.nome});
 });
@@ -92,7 +92,7 @@ router.get('/:id', async function(req, res, next) {
 /* **DELETE** apaga um produto e volta para lista */
 router.post('/:id/del', async (req,res,next) => {
   await Produto.findByIdAndRemove(req.params.id);
-  res.redirect('produto/listProduto');
+  res.redirect('/produto/listProduto');
 });
 
 /* GET chama o edit */

@@ -44,7 +44,7 @@ router.post('/', async (req,res,next) =>{
 	  cpf: cpf,
 	  rg: rg
   });
-  res.redirect(`cliente/${cliente.id}`);
+  res.redirect('/cliente/listCliente');
 });
 
 /* GET formulário de pesquisa de cliente */
@@ -71,12 +71,6 @@ router.get('/findNome', async (req,res,next) => {
 });
 
 
-/* GETs para busca por título ou número da anotação. 
-router.get('/fn', async (req,res,next) => {
-  // o _id criado automaticamente pelo Mongo não corresponde a um "número". Seria necessário criar um objeto para poder comparar o id.
-  res.render('notFound',{numero:req.query.numero});
-});*/
-
 /* GET para mostrar um cliente (e opções) */
 router.get('/:id', async function(req, res, next) {
   let result = await Cliente.findById(req.params.id);
@@ -89,7 +83,7 @@ router.get('/:id', async function(req, res, next) {
 /* **DELETE** apaga um cliente e volta para lista */
 router.post('/:id/del', async (req,res,next) => {
   await Cliente.findByIdAndRemove(req.params.id);
-  res.redirect('cliente/listCliente');
+  res.redirect('/cliente/listCliente');
 });
 
 /* GET chama o edit */
